@@ -1,0 +1,113 @@
+### Navigating the file System
+
+pwd 
+    print working directory
+
+ls 
+    list of files in the directory
+
+ls -F
+    -F stands for classify
+    to identify folders and files
+
+ls -l
+    long description of the files or folder
+
+ls -lh 
+    same as the previous command but more human readable
+
+ls -a
+    show all the files, even with hidden files
+
+cd 
+    change directory
+
+. = current folder
+.. = the parent folder
+
+### File Extensions in Linux
+
+File Extensions doesn't matter in linux, it read the code inside to determine the file type
+
+File tux.png
+    get information about the file
+
+### Wildcards
+
+Wildcards is case sensitive
+
+ls *
+    list out everything content inside each directory in the current directory
+
+ls D*
+    everything that starts with D
+
+ls *.txt
+    everything that end with .txt
+
+ls ?.txt
+    returne everything that end with .txt but only with one character
+
+    q.txt, a.txt, b.txt
+
+ls ??.txt
+    return everything that end with .txt but on with two characters
+
+    ab.txt, ac.tcxt, fy.txt
+
+ls file[1234567890].txt
+    everything that inside [] is a option of could be returned
+
+    file1.txt, file9.txt
+
+    but not filea.txt or fileb.txt
+
+ls file[0-9].txt
+    same as the previous command
+
+ls file[A-Z].txt
+
+ls file[0-9][0-9].txt
+    return all file that have two number between file and .txt
+
+### Creating Files and folders
+
+touch file1
+    create a file in the current directory
+
+mkdir fodler
+    create a fodler in the current directory
+
+mkdir -p bla/thing/shablam
+    create the whole path
+
+Brace expansion
+
+mkdir {jan,feb,mar,apr,jun,jul,aug,sep,oct,nov,dec}{2017,2018,2019,2020,2021,2022}
+    this will create all the combination of file, such as jan2017,feb2017...nov2022,dec2022
+
+mkdir {jan,feb,mar,apr,jun,jul,aug,sep,oct,nov,dec}{2017..2022}
+    same as the previous command
+
+touch {jan,feb,mar,apr,jun,jul,aug,sep,oct,nov,dec}{2017..2022}/file{1..100}
+    in all the folder create 100 file inside each folder
+
+rm -r folder/
+    remove it recursively
+    remove everything inside the folder and the folder itself
+
+rm -ri folder/
+    delete interactively
+    it will ask one by one
+    y to delete
+    n not to delete
+
+rmdir project/*
+    delete empty directory inside project directory
+
+### Copying Files nad Folders
+
+
+
+
+

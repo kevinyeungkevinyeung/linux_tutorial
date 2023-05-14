@@ -1,0 +1,167 @@
+sudo apt -y install ncal
+    to get the cal caommand to display calendar in the terminal
+
+echo <text>
+    print out whatever you inputted
+
+cal
+    print out the calendar with current date highlighted
+
+cal <year> or cal -y 
+    print out the calendar for the whole year
+
+date
+    get today date, time, and timezone
+
+clear or crt + L
+    clear everything on the terminal
+
+history
+    get all the command line history
+
+!<number>
+    run certain command in the command line history
+
+!!
+    rerun the most recent command
+
+history -c; history -w
+    clear the history
+
+exit or crt + D
+    close the terminal
+
+#### understanding command structure ###
+
+<CommandName> <Options> <Inputs>
+    commandName give the terminal a name to search in the shell path
+    linux terminal is case sensitive
+    long form options have one dash (-) and short form options have two dashes (--)
+
+which <CommandName>
+    find the path for the command
+    
+
+rm <file name>
+    remove a file
+
+sudo bash <file name>.sh
+    install a .sh file
+
+### Using the Linux Manual 
+
+Manual structure
+
+Section                 Contains
+-------------------------------------------------
+    1                 User comamnds ##
+    2                 System Calls
+    3                 C Library Functions
+    4                 Devices and Special Files
+    5                 File Formats and Conventions ##
+    6                 Games
+    7                 Miscellaneous
+    8                 System Administration ##
+
+    ## likely to Use
+
+man -k <commandName>
+    manual
+    -k searching 
+
+<> mandatory
+... multiple 
+[] optional
+{} default value
+
+man -k "descritption"
+    search command that related to the descritption
+
+### Command Input and Output
+
+Two Inputs
+    Standard input (0)
+    Command arguments
+
+Two outputs
+    Standard output (1)
+    Standard Error(2)
+
+() Standard data stream
+
+### Redirection
+cat 1> output.txt
+    change destination of the stream number 1
+
+    by default, linux will empty the file and write the new file
+
+cat 1>> output.txt
+    add content to the exiting file
+
+    it will add to the existing file
+
+redirect standard Error
+    cat 2> error.txt
+    cat 2>> error.txt
+
+    keep track of error log 
+
+cat 1>>output.txt 2>>error.txt
+
+standard input
+    cat 0< input.txt
+
+passing from one terminal to another terminal
+    tty to get terminal path
+
+### Piping
+
+cut < date.txt --delimiter " " --fields 1
+    cut the txt into fields that seperated by space and get the first field back as output
+
+date | cut --delimiter " " --fields 1
+    using the standard output from date command, and pipe it into the standard input of cut command
+
+date | cut --delimiter " " --fields 1 > today.txt 
+    same as previous command but save the output from cut into a text file
+
+date | tee fulldate.txt | cut --delimiter=" " --fields=1
+    save the fulldate to a text file, but still pass the standard output to the cut's standard input
+
+You can't do any piping after doing redirection!!! However, we can use tee command to overcome this
+
+### Xargs
+
+date | echo
+    However, echo doesn't accept standard input, it only takes command line arguments
+
+date | xargs echo
+    xargs convert standard input into command line input
+
+date | xargs echo "hello"
+    it will complete the "hello" then handle the standard input from xargs
+
+cat filetodelete.txt | xargs rm
+    filetodelete.txt contains a list of files that need to be deleted
+
+STDOUT = standard output
+STDIN  = standard input
+STDERR = standard error
+
+### Aliases
+
+activities (top left) => search (text) => save (.bash_aliases)
+    make this file a hidden file
+
+alias getdates='date | tee /home/parallels/fulldate.txt |cut --delimiter=" " --fields=1 | tee /home/parallels/shortdate.txt | xargs echo hello'
+    make an alias for the command
+
+alias calmagic="xargs cal -A 1 -B 1 > /home/parallels/thing.txt"
+    take terminal input
+
+Assignment:
+
+    ls /etc | xargs echo 1> "file1.txt"
+    ls /run | xargs echo 1> "file2.txt"
+    cat file1.txt file2.txt | tee unsorted.txt | sort -r 1> reversed.txt
+

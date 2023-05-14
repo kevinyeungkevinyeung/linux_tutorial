@@ -107,7 +107,32 @@ rmdir project/*
 
 ### Copying Files nad Folders
 
+cp file1.txt file2.txt
+    copy file1.txt and save it as file2.txt
 
+cp file1.txt file2.txt copy_me/
+    copy file1.txt and file2.txt and save it inside the copy_me/ directory
 
+cp copy_me/* ..
+    copy everything inside copy_me/ to the parent folder
 
+cp -r copy_me/ destination/
+    copy the folder and everything inside into destination folder
+
+### Moving + Renaming Files and Folders
+
+mv oldname.txt newname.txt
+    rename oldname.txt to newname.txt
+
+mv oldfolder/ newfolder
+    rename the old folder to newfolder
+
+mv newfolder/* .
+    move everything inside newfolder into the current directory
+
+mv newfolder/ ~/Documents
+    move the whole folder inside Documents
+
+mv ~/Documents/newfolder/ ./jackpot
+    move newfolders inside Documents, and rename it to jackpot
 

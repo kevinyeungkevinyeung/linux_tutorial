@@ -1,0 +1,70 @@
+
+### The software Repositories
+
+Main 
+    Canonical-supported free and open-source software
+
+Universe
+    Community-maintained free and open-source software
+
+Restricted
+    Proprietary drivers for devices
+
+Multiverse
+    Software restricted by copyright or legal issues
+
+### Searching for Packages Using apt
+
+apt-cache search docx
+    search packages related to docx
+
+apt-cache show docx2txt
+    get information about the package
+
+apt-cache information is stored inside cache
+
+List of available packages are stored in /var/lib/apt/lists
+
+### Updating the cache and updating software
+
+sudo apt-get update
+    update the apt-cache
+
+sudo apt-get upgrade
+    update all the package
+
+always update the cache before update the softwares
+
+### Installing New Software
+
+sudo apt-get install x11-apps
+    install x11-apps
+
+### Downloading Source code
+
+sudo nano /etc/apt/sources.list
+    uncomment all the deb-src lines
+
+sudo apt-get install dpkg-dev
+
+sudo apt-get source x11-apps
+    get the source code
+
+if install thru source code, U will not be able to use auto update
+
+### Uninstalling Packages
+
+sudo apt-get remove x11-apps
+    remove package, but not prefer way to do it
+
+sudo apt-get purge x11-apps
+    remove package and the config file
+
+sudo apt-get autoremove
+    remove dependencies that is not needed anymore
+
+sudo apt-get clean
+    clean the archives packages
+
+sudo apt -get autoclean
+    clean the package that can't be download anymore

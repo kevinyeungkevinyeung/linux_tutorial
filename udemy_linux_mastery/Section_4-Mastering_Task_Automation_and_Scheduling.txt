@@ -1,0 +1,38 @@
+### Creating Bash Scripts
+
+using nano to create a file with .sh
+
+Example
+
+#!/bin/bash -- must be first line
+
+mkdir ~/Desktop/magic
+cd ~/Desktop/magic
+touch file{1..100}
+ls -lh ~/Desktop/magic > ~/Desktop/magic.log
+
+# end of Example
+
+chmod +x backup
+    make the bash file a executable
+
+one step execution
+    go to home directory
+    create a directory calls bin
+    move the bash find into the bin folder
+
+    nano .bashrc/ => go to the bottom add PATH="$PATH:$HOME/bin"
+
+### Scheduling with Cron
+
+crontab -e
+    check the cron table text file
+
+m = mins
+h = hours
+dom = day of the month
+mon = month
+dow = day of the week 0-6 
+command = the linux command
+
+crontab.guru

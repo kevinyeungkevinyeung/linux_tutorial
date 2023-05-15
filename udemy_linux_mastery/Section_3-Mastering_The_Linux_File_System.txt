@@ -136,3 +136,184 @@ mv newfolder/ ~/Documents
 mv ~/Documents/newfolder/ ./jackpot
     move newfolders inside Documents, and rename it to jackpot
 
+### Editing Files using Nano
+
+A text editor in the terminal
+
+nano diary.txt
+    using nano to create a diary.txt
+
+write out = save
+
+read file = insert a text file
+
+where is = search
+
+replace = replace strings
+
+cut = cut the line of text
+
+spell checker = execute => spell check
+
+### The Locate command
+
+It search the database for Files
+
+Search is case sensitive
+
+locate *.conf
+    search all the files that end with .conf
+
+locate -i *.CONF
+    search with not case sensitive
+
+locate -i --limit 3 *.conf
+    search .conf but only return 3 files
+
+locate -e *.conf
+    also check if the files exist
+
+sudo updatedb
+    update the files database
+    to make the database up to date
+
+### The Find Command
+
+find 
+    get all the file and folder insider the current directory
+
+find /etc
+    get everything below /etc
+
+find . -maxdepth 1
+    get everything at current level
+
+find . -type f
+    only get files
+
+find . -type d
+    only get folder
+
+find . -maxdepth 1 -type d
+    get all the folder at current level
+
+find . -name "find.txt"
+    return the path of find.txt
+
+find . -maxdepth 10 -iname "?.TXT"
+    case insensitive
+
+find / -type f -size +100k
+    get all file size greater than 100k
+
+sudo find / -type f -size +100k -size -5M | wc -l
+    files size > 100k and < 5M
+    wc -l count number of result
+
+sudo find / -type f -size +100k -size -5M -exec cp {} ~/Desktop/copy_here \;
+    find everything files > 100k and < 5m and copy everything to the destination folder
+    -exec doing the action directly
+    -ok this will ask task by task
+
+    you can use the -exec option to execute another command on each of ht results - remember to end with \;
+
+### Viewing Files
+
+tac
+    reverse of cat
+    however, it doesn't sort the content of the line
+
+cat file[1-5].txt | tac > reversed.txt
+    reverse the output of cat
+    reverse the file vertically
+
+rev
+    reverse the content on each line
+    reverse the file horizontally
+
+less file.txt
+    you can use the keyboard to scroll the output
+    press q to exit
+
+head -n 2
+    see the first couple rows of the file
+    -n number of rows
+
+tail
+    see the last couple rows of the file
+
+### Sorting Data
+
+sort words.txt
+    sort the words.txt
+
+sort -r words.txt
+    sort in descending order
+
+sort -n numbers.txt
+    sort numeric 
+
+sort -nr numbers.txt
+    reverse sort numeric
+
+sort -u numbers.txt
+    -u = unique
+
+ls -l /etc | head -n 20 | sort -k 5n
+    sort the result using column 5 with numeric Sorting
+    can also use 5nr to reverse it
+    5hr = reverse human readable
+
+### File Archiving + Compression
+
+tar -cvf ourarchive.tar file[1-3].txt
+    create a tar file
+
+tar -tf ourarchive.tar
+    check what inside the tar file
+
+tar -xvf ourarchive.tar
+    extract the tar file
+
+gzip bzip2
+
+gzip ourarchive.tar
+    gzip faster but less effective
+
+bunzip2 ourarchive.tar
+    bzip slower but more effective
+
+zip ourthing.zip file1.txt file2.txt file3.txt
+    normal zip that can be use in other OS
+
+unzip ourthing.zip  
+    unzip the file
+
+tar -cvzf ourarchive.tar.gz file[1-3.txt]
+    create tar and zip it in one step
+    z = gzip
+
+tar -cvjf ourarchive.tar.bz2 file[1-3.txt]
+    create tar and zip it in one step
+    z = bzip   
+
+tar -xvzf ourarchive.tar.gz
+    extract a zipped tar file
+
+tar -xvjf ourarchive.tar.bz2
+
+### assignment 
+
+1.
+    mkdir super_secret_stuff
+
+    touch super_secret_stuff/top_secret.txt
+
+    sudo updatedb
+
+    locate top_secret.txt
+
+    locate top_secret.txt > secret_place.txt
+
+2.
+    sudo find ~/ -maxdepth 4 -type f -size +1M -exec ls -lh {} \; | sort -k 5hr 1> ~/filesizes.txt
